@@ -33,14 +33,14 @@ app.get('/api/courses/:courseId', (req, res) => {
   return res.json(course);
 }); */
 
-app.get('/api/courses', (req, res) => {
+app.get('/api/courses', async (req, res) => {
   const { term } = req.query;
 
   if (!term) {
-    const data = getCoursesByTermId(CURRENT_TERM_ID);
+    const data = await getCoursesByTermId(CURRENT_TERM_ID);
   }
   console.log(term);
-  res.json(courses);
+  res.json(data);
 });
 
 app.get('/api/terms', async (req, res) => {
